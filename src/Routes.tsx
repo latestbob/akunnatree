@@ -2,7 +2,7 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
-
+import Dashboard from './pages/dashboard/Dashboard';
 
 const routes = [
     {
@@ -11,7 +11,7 @@ const routes = [
         exact:true,
         auth:false,
         component:Home,
-        pageTile:"Akunna's Linktree"
+        pageTile:"Akunna Ndubuisi - Beauty, cosmetic & personal care"
     },
 
     {
@@ -21,6 +21,15 @@ const routes = [
         auth:false,
         component:Login,
         pageTile:"Login to Dashboard"
+    },
+
+    {
+        id:3,
+        path:'/dashboard',
+        exact:true,
+        auth:true,
+        component: Dashboard,
+        pageTile:"Dashboard"
     }
 ];
 
