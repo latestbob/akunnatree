@@ -3,6 +3,7 @@ import { Router } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/dashboard/Dashboard';
+import Forgot from './pages/Forgot';
 
 const routes = [
     {
@@ -30,6 +31,16 @@ const routes = [
         auth:true,
         component: Dashboard,
         pageTile:"Dashboard"
+    },
+
+
+    {
+        id:4,
+        path:'/forgot',
+        exact:true,
+        auth:false,
+        component: Forgot,
+        pageTile:"Forgot Password"
     }
 ];
 

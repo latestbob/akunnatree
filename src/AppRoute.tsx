@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import routes from './Routes';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation , Navigate} from 'react-router-dom';
+import { useAuth } from './context/auth';
 
 const AppRoute = ():JSX.Element =>{
 
@@ -8,6 +9,8 @@ const AppRoute = ():JSX.Element =>{
 
     const [pageTile, setPageTitle] = useState("");
     const location = useLocation();
+    const {currentUser} = useAuth();
+
 
     useEffect(() => {
         
@@ -28,18 +31,32 @@ const AppRoute = ():JSX.Element =>{
         <>
 
             {/* return routes here */}
-
+{/* 
             <Routes>
                     {
                         routes.map(({id, path,component:Component, exact, auth}) => (
                             <Route
                             key={id}
                             path={path}
-                            element={<Component />}
+                            element={<ProtectedRoute element={<Component />} auth={auth}/>}
                           />
                         ))
                     }
-            </Routes>
+            </Routes> */}
+
+            <Routes>
+                {routes.map(({ id, path, component: Component, auth }) => {
+                    const isAuthenticated = currentUser !== null;
+                    
+                    if (auth && !isAuthenticated) {
+                    // Redirect to login if authentication is required and user is not authenticated
+                    return <Route key={id} path={path} element={<Navigate to="/login" state={{ from: location }} replace />} />;
+                    }
+
+                    // Render component if authentication is not required or user is authenticated
+                    return <Route key={id} path={path} element={<Component />} />;
+                })}
+                </Routes>
 
         
         </>
