@@ -4,6 +4,10 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/dashboard/Dashboard';
 import Forgot from './pages/Forgot';
+import MyLinks from './pages/dashboard/MyLinks';
+import Analytics from './pages/dashboard/Analytics';
+import Review from './pages/Review';
+import ReviewTwo from './pages/ReviewTwo';
 
 const routes = [
     {
@@ -41,7 +45,43 @@ const routes = [
         auth:false,
         component: Forgot,
         pageTile:"Forgot Password"
-    }
+    },
+
+    {
+        id:5,
+        path:'/links',
+        exact:true,
+        auth:true,
+        component: MyLinks,
+        pageTile:"My Links"
+    },
+
+    {
+        id:5,
+        path:'/analytics',
+        exact:true,
+        auth:true,
+        component: Analytics,
+        pageTile:"Analytics"
+    },
+
+    {
+        id:6,
+        path:'/pluto-review',
+        exact:true,
+        auth:false,
+        component: Review,
+        pageTile:"Pluto Beauty Supplies Review"
+    },
+
+    {
+        id:7,
+        path:'/pluto-review-next',
+        exact:true,
+        auth:false,
+        component: ReviewTwo,
+        pageTile:"Pluto Beauty Supplies Review"
+    },
 ];
 
 export default routes;
