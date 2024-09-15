@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { motion, spring } from 'framer-motion';
 
 const Stepper = ():JSX.Element => {
     const location = useLocation();
     return (
         <>
-             <div className="card py-3 shadow w-full px-2 md:px-5 bg-white">
+             <motion.div
+                  initial={{ opacity: 0, x:100 }}
+                  animate={{ opacity: 1 , x:0}}
+                  transition={{delay:1, duration:0.9, type:'spring'}}
+          
+             className="card py-3 shadow w-full px-2 md:px-5 bg-white">
                 <ol className="flex justify-center items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base">
     <li className={`flex md:w-full ${location.pathname == '/pluto-review' ? 'items-center text-green-600 dark:text-green-500' : ''} sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700`}>
         <Link to='/pluto-review'>
@@ -44,7 +50,7 @@ const Stepper = ():JSX.Element => {
     </li>
 </ol>
 
-                </div>
+                </motion.div>
         
         </>
     );
