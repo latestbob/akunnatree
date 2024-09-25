@@ -24,8 +24,13 @@ const Review = ():JSX.Element => {
                              animate={{ opacity: 1 , y:0}}
                              transition={{delay:1, duration:1, type:'spring'}}
                         >
-                        <h3 className="text-lg md:text-2xl font-bold mt-10 font-sans text-black text-center">Enjoy Exclusive Savings on Next Purchase</h3>
-                            <p className="text-center text-sm px-1 my-5 md:px-10 md:text-base font-normal ">Thank you for choosing Pluto Beauty Supplies! <br /> We value your feedback and want to offer you 5% off your next purchase when you leave us a positive review. 
+                        <h3 className="text-lg md:text-2xl font-bold mt-10 font-sans text-black text-center">🎉 Woohoo! Exclusive 5% OFF Just for You! 🎉</h3>
+                            <p className="text-center text-sm px-1 my-5 md:px-10 md:text-base font-normal ">
+                            Hey, Gorgeous! 💅✨ <br /> <br />
+
+                            We LOVE our customers, so here’s something special! 🛍️ Leave a review on our Google Review Page and enjoy 5% OFF your next purchase! 🎁✨
+
+It’s quick and easy—just follow the steps and treat yourself! 😍🌟
                               
 
 </p>

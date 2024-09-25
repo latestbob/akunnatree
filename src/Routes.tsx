@@ -8,6 +8,7 @@ import MyLinks from './pages/dashboard/MyLinks';
 import Analytics from './pages/dashboard/Analytics';
 import Review from './pages/Review';
 import ReviewTwo from './pages/ReviewTwo';
+import Confirm from './pages/Confirm';
 
 const routes = [
     {
@@ -80,6 +81,15 @@ const routes = [
         exact:true,
         auth:false,
         component: ReviewTwo,
+        pageTile:"Pluto Beauty Supplies Review"
+    },
+
+    {
+        id:8,
+        path:'/confirmation',
+        exact:true,
+        auth:false,
+        component: Confirm,
         pageTile:"Pluto Beauty Supplies Review"
     },
 ];
