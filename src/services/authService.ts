@@ -1,6 +1,6 @@
 import React from 'react';
 // import auth from "../../firebase"
-import auth from '../firebase';
+import {auth, db} from '../firebase';
 import { signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 

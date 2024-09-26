@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect,  useContext, ReactNode } from "react";
-import auth from "../firebase";
+import {auth , db}from "../firebase";
 import { onAuthStateChanged , User} from "firebase/auth";
 
 //create context

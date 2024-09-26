@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { addLinkToFirestore , fetchLinks} from '../services/firestoreService';
+import ux from '../assets/ux.png'
 
 const Social = ():JSX.Element => {
 
+  interface Link {
+    id:string;
+    name: string;
+    url: string;
+    description?: string;
+  }
 
     const [isOpen, setIsOpen] = useState(false); // Modal visibility state
 
@@ -10,6 +18,10 @@ const Social = ():JSX.Element => {
     const[name, setName] = useState<string>("");
     const[url, setUrl] = useState<string>("");
     const[description, setDescription] = useState<string>("");
+
+    const[loading, setLoading] = useState<boolean>(false);
+
+    const[links, setLinks] = useState<Link[]>([]);
 
 
 
@@ -29,11 +41,21 @@ const Social = ():JSX.Element => {
     }
 
 
-    function handleSubmit(e:React.FormEvent){
+   async function handleSubmit(e:React.FormEvent){
         e.preventDefault();
+        setLoading(true);
 
 
-        alert("working")
+        try {
+          await addLinkToFirestore(name, url, description);
+          setLoading(false);
+          getLinks();
+          alert("added to firestore")
+          
+      } catch (err:any) {
+        setLoading(false);
+            alert(err.message);
+      }   
     }
 
 
@@ -49,10 +71,29 @@ const Social = ():JSX.Element => {
     };
 
 
+    async function getLinks(){
+       try {
+      const returnedLinks: Link[] = await fetchLinks();
+
+        setLinks(returnedLinks);
+        console.log(returnedLinks);
+       } catch (err:any) {
+          alert(err.message);
+       }
+    }
+
+
+      useEffect(() => {
+    
+    getLinks();
+  }, []);
+
+    
+
     return (
         <>
 
-            <div className="mt-10 rounded bg-white h-[40vh] mx-10 px-8">
+            <div className="mt-10 rounded bg-white min-h-[80vh] mx-10 px-8">
                     <h3 className="text-center py-5 text-2xl font-semibold font-sans">My Link Tree</h3>
 
                     <div className='text-right'>
@@ -61,8 +102,37 @@ const Social = ():JSX.Element => {
                     </div>
 
 
+                   <br />
+                    <br />
+                    <div className="tree w-full  py-3 m-auto px-3 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-4" >
+                          {links.map((link) => (
+                          
+                                  <div className="bg-white py-3 md:py-5 rounded-lg h-auto px-8  md:border-2 border-amber-400">
+
+                                  <div className='flex flex-row-reverse md:flex-row justify-between md:justify-around w-full'>
+                                    <img src={ux} className="w-10 rounded" alt="" /> 
+                                      <div>
+                                      <p className="font-normal md:font-medium ">{link.name}</p>
+                                      <p className="text-xs font-light truncate w-64">{link.url}</p>
+                                      </div>
+
+                                      <div className='flex flex-col justify-between'>
+                                        <i className='fa fa-edit text-amber-500'></i>
+                                        <i className="fa fa-trash text-red-600"></i>
+
+                                      </div>
+                                                  
+                                  </div>
+
+                                  </div>
+                        ))}
+                  </div>
+                    
 
             </div>
+
+
+         
 
             {/* social modal */}
 
@@ -110,7 +180,7 @@ const Social = ():JSX.Element => {
   
   
   
-  <button type="submit" className="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800">Submit</button>
+  <button type="submit" className="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800">{loading ? 'Loading,,,,':'Submit'}</button>
 </form>
 
 
