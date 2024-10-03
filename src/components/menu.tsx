@@ -27,7 +27,7 @@ const Menu = ():JSX.Element => {
 
        // https://www.creative-tim.com/twcomponents/component/dashboard-template/landing#
         <>
-            <div className="bg-gray-900 w-[20%] 2xl:w-[15%] menu py-20 ">
+            <div className="hidden md:block bg-gray-900 w-[20%] 2xl:w-[15%] menu py-20 ">
                 <img src={avater} className='w-32 rounded-full text-center m-auto' />
 
 
@@ -56,14 +56,7 @@ const Menu = ():JSX.Element => {
                     </Link>
 
 
-                    <Link to="/analytics" className={`flex h-10 px-8 my-4 items-center ${location.pathname == '/analytics' ? 'bg-amber-500':''}`}>
-                    <svg className="h-6 w-6 text-gray-600 "  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-
-
-                        <p className="font-medium text-base text-gray-600  ml-4">Analytics</p>
-                    </Link>
+                  
              </div>
 
 

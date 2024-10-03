@@ -7,8 +7,51 @@ import ux from '../assets/ux.png'
 import web from '../assets/web-link.png'
 import { motion, spring } from 'framer-motion';
 import whatsapp from '../assets/whatsapp.png';
+import { useState, useEffect } from 'react';
+import { fetchLinks, addClickMetrics } from '../services/firestoreService';
 
 const Home = (): JSX.Element => {
+
+    interface Link {
+        id:string;
+        name: string;
+        url: string;
+        description?: string;
+      }
+      const[links, setLinks] = useState<Link[]>([]);
+
+      async function getLinks(){
+        try {
+       const returnedLinks: Link[] = await fetchLinks();
+ 
+         setLinks(returnedLinks);
+         console.log(returnedLinks);
+        } catch (err:any) {
+           alert(err.message);
+        }
+     }
+ 
+ 
+       useEffect(() => {
+     
+     getLinks();
+   }, []);
+
+
+
+   async function handleClicks(e:React.MouseEvent<HTMLDivElement>,id:string,name:string, url:string){
+    e.preventDefault();
+        try {
+
+            await addClickMetrics(id, name, url);
+
+            window.open(url, '_blank');
+            
+        } catch (err:any) {
+            alert(err.message);
+         }
+   }
+ 
 
     return (
         <>
@@ -74,42 +117,28 @@ const Home = (): JSX.Element => {
 
 
                 <div className="tree w-full md:w-3/4  py-3 m-auto px-3 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-4" >
+                            
 
-                    <div className="bg-white py-3 md:py-5 rounded-lg h-auto px-8  md:border-2 border-amber-400">
+                {links.map((link) => (
 
-                        <div className='flex flex-row-reverse md:flex-row justify-between md:justify-around w-full md:w-1/2'>
+                    <div 
+                    onClick={(e) => handleClicks(e, link.id, link.name, link.url)}
+                    className="bg-white py-3 md:py-5 rounded-lg h-auto px-8  md:border-2 border-amber-400 hover:cursor-pointer">
+
+                        <div className='flex flex-row-reverse md:flex-row justify-between md:justify-around w-full items-center'>
                            <img src={ux} className="w-8 rounded" alt="" /> 
-                           <p className="font-normal md:font-medium ">Pluto Beauty Supplies</p>
+                           <p className="font-normal md:font-medium ">{link.name}</p>
+
+                           <i className='fa fa-angle-right  text-slate-600'></i>
                         </div>
                     
                     </div>
 
-                    <div className="bg-white py-3 md:py-5 rounded-lg h-auto px-8  md:border-2 border-amber-400">
+                  
+                ))}
+                  
 
-                        <div className='flex flex-row-reverse md:flex-row justify-between md:justify-around w-full md:w-1/2'>
-                           <img src={ux} className="w-8 rounded" alt="" /> 
-                           <p className="font-normal md:font-medium ">Pluto Beauty Supplies</p>
-                        </div>
-                    
-                    </div>
-
-                    <div className="bg-white py-3 md:py-5 rounded-lg h-auto px-8  md:border-2 border-amber-400">
-
-                        <div className='flex flex-row-reverse md:flex-row justify-between md:justify-around w-full md:w-1/2'>
-                           <img src={ux} className="w-8 rounded" alt="" /> 
-                           <p className="font-normal md:font-medium ">Pluto Beauty Cafe</p>
-                        </div>
-                    
-                    </div>
-
-                    <div className="bg-white py-3 md:py-5 rounded-lg h-auto px-8  md:border-2 border-amber-400">
-
-                        <div className='flex flex-row-reverse md:flex-row justify-between md:justify-around w-full md:w-1/2'>
-                           <img src={ux} className="w-8 rounded" alt="" /> 
-                           <p className="font-normal md:font-medium ">Pluto Beauty Supplies</p>
-                        </div>
-                    
-                    </div>
+                   
                     
                 </div>
 
