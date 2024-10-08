@@ -150,7 +150,7 @@ const Social = ():JSX.Element => {
     return (
         <>
 
-            <div className="mt-10 rounded bg-white min-h-[80vh] mx-10 px-2 md:px-8">
+            <div className="mt-10 rounded bg-white min-h-[80vh]  md:mx-10 px-2 md:px-8">
                     <h3 className="text-center py-5 text-lg md:text-2xl font-semibold font-sans">My Link Tree</h3>
 
                     <div className='text-right'>

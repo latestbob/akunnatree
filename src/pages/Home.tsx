@@ -87,7 +87,7 @@ const Home = (): JSX.Element => {
                 }}
                 transition={{delay:1.2,duration:1.3, type:'tween'}}
                 
-                className="socials mt-4 mb-16 flex w-1/2 md:w-1/5 mx-auto max-h-16 justify-evenly align-middle">
+                className="socials mt-4 mb-16 flex w-1/2 space-x-4 md:w-1/5 mx-auto max-h-16 justify-evenly align-middle">
 
 
 
