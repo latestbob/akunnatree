@@ -90,27 +90,50 @@ const Home = (): JSX.Element => {
                 className="socials mt-4 mb-16 flex w-1/2 md:w-1/5 mx-auto max-h-16 justify-evenly align-middle">
 
 
-                        <motion.img 
-                            whileHover={{
-                                scale:1.4
-                            }}
-                        className='social w-10' src={instagram} />
-                        <motion.img 
-                            whileHover={{
-                                scale:1.4
-                            }}
-                        className='social w-10' src={tiktok} />
-                        <motion.img
-                            whileHover={{
-                                scale:1.4
-                            }}
-                        className='social w-10' src={facebook} />
 
-                        <motion.img
+                    <a href="https://www.instagram.com/plutobeautysupplies/" target="_blank" rel="noopener noreferrer">
+                        <motion.img 
                             whileHover={{
-                                scale:1.4
+                                scale: 1.4
                             }}
-                        className='social w-10' src={whatsapp} />
+                            className='social w-10' 
+                            src={instagram} 
+                            alt="Instagram"
+                        />
+                    </a>
+                        
+                    <a href="https://web.facebook.com/Plutobeautycafe1" target="_blank" rel="noopener noreferrer">
+                        <motion.img 
+                            whileHover={{
+                                scale: 1.4
+                            }}
+                            className='social w-10' 
+                            src={facebook} 
+                            alt="Instagram"
+                        />
+                    </a>
+                        
+                        <a href="https://www.instagram.com/plutobeautycafe/" target="_blank" rel="noopener noreferrer">
+                        <motion.img 
+                            whileHover={{
+                                scale: 1.4
+                            }}
+                            className='social w-10' 
+                            src={instagram} 
+                            alt="Instagram"
+                        />
+                    </a>
+
+                    <a href="https://api.whatsapp.com/send/?phone=2348156293779&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                        <motion.img 
+                            whileHover={{
+                                scale: 1.4
+                            }}
+                            className='social w-10' 
+                            src={whatsapp} 
+                            alt="Instagram"
+                        />
+                    </a>
 
 
                 </motion.div>

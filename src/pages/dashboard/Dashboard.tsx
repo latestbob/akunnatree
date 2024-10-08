@@ -80,11 +80,13 @@ const Dashboard = ():JSX.Element => {
 
                 <section className="flex flex-row bg-gray-100 h-screen w-full p-0 m-0">
                     <Menu />
+                    
+                    
                     <div className="flex-grow">
                         <div className="blank py-8 h-10 w-full"></div>
-
+                        
                         <div className="block md:flex justify-around items-center metrics bg-white min-h-[40vh] px-10">
-                            
+                           
                             <div className="bg-gray-900 text-white shadow-lg py-3 px-3 rounded h-[20vh] w-full md:w-2/5 flex flex-col justify-center items-center">
 
                                 <h3 className="text-center text-lg">Total Links</h3>
