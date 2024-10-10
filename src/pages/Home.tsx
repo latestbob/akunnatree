@@ -139,7 +139,7 @@ const Home = (): JSX.Element => {
                 </motion.div>
 
 
-                <div className="tree w-full md:w-3/4  py-3 m-auto px-3 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-4" >
+                {/* <div className="tree w-full md:w-3/4  py-3 m-auto px-3 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-4" >
                             
 
                 {links.map((link) => (
@@ -163,7 +163,39 @@ const Home = (): JSX.Element => {
 
                    
                     
-                </div>
+                </div> */}
+
+
+                {/* another */}
+
+                <div className="tree w-full md:w-3/4  py-3 m-auto px-3 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-4" >
+                            
+
+                            {links.map((link) => (
+            
+                                <div 
+                                // onClick={(e) => handleClicks(e, link.id, link.name, link.url)}
+                                className="bg-white py-3 md:py-5 rounded-lg h-auto px-8  md:border-2 border-amber-400 hover:cursor-pointer">
+            
+                                    <a href={link.url} target='_blank' className='flex flex-row-reverse md:flex-row justify-between md:justify-around w-full items-center'>
+                                       <img src={ux} className="w-8 rounded" alt="" /> 
+                                       <p className="font-normal md:font-medium ">{link.name}</p>
+            
+                                       <i className='fa fa-angle-right  text-slate-600'></i>
+                                    </a>
+                                
+                                </div>
+            
+                              
+                            ))}
+                              
+            
+                               
+                                
+                            </div>
+
+
+                {/* end of another */}
 
                 
 
